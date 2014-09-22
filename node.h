@@ -2,22 +2,23 @@
 #include <stdlib.h>
 #include <list>
 
-static int n_id = 0;
-class node {
+static int id = 0;
+struct edge;
 
-// Variables
+class node {
 private:
 	int data;
-
-	struct edge {
-		int cost;
-		struct node* nodeptr;
-	};
 	std::list <edge> edgeList;
 
-// Functions
 public:
 	node ();
 	void append(node* newNode);
 	void printList ();
+
+	friend class graph;
+};
+
+struct edge {
+	int cost;
+	node* nodeptr;
 };
